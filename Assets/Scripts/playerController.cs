@@ -21,10 +21,8 @@ public class playerController : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            transform.Translate(mouseX * boySpeed * Time.deltaTime, 0, 0);
+            transform.Translate(mouseX * boySpeed * Time.deltaTime, 0, 10 * Time.deltaTime);
             animPalyer.SetInteger("movement",1);
-            transform.Translate( 0, 0, 10 * Time.deltaTime);
-
         }
         else
         {

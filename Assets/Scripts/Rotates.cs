@@ -12,4 +12,13 @@ public class Rotates : MonoBehaviour
     {      
         transform.Rotate(xRot,yRot,zRot);            
     }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("worked collision");
+            other.transform.Translate(zRot *(-10) * Time.deltaTime, 0, 0);
+        }
+    }
 }
