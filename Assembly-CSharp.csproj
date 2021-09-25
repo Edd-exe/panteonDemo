@@ -101,6 +101,7 @@
      <Compile Include="Assets\Scripts\halfDonut.cs" />
      <Compile Include="Assets\Scripts\opponentControl.cs" />
      <Compile Include="Assets\Scripts\playerController.cs" />
+     <Compile Include="Assets\Scripts\wallPaint.cs" />
      <None Include="Assets\Packages\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Packages\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Packages\InkPainter\Shader\Effective\HeightDrip.shader" />
