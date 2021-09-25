@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         mouseX = Input.GetAxis("Mouse X");
-        mainCamera.position = new Vector3(mainCamera.transform.position.x,mainCamera.transform.position.y, transform.position.z - 15);
+        mainCamera.position = new Vector3(mainCamera.transform.position.x,mainCamera.transform.position.y, transform.position.z - 16);
 
         if (Input.GetMouseButton(0))
         {
@@ -36,6 +36,12 @@ public class playerController : MonoBehaviour
         {
             Debug.Log("worked collision");
             transform.position = new Vector3(0,0,0);     
-        }    
+        } 
+
+        if (other.gameObject.tag == "Finish")
+        {
+            Debug.Log("win!!");
+        }   
     }
+
 }

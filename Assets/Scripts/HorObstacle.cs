@@ -13,10 +13,11 @@ public class HorObstacle : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(speed* a* Time.deltaTime, 0, 0);
+        //transform.Translate(speed* a* Time.deltaTime, 0, 0);
         
         if ( vectorPos == 0) // x 
         {
+            transform.Translate(speed* a* Time.deltaTime, 0, 0);
             if (transform.position.x <= minPos)
             {
                 a = 1; 
@@ -30,12 +31,27 @@ public class HorObstacle : MonoBehaviour
 
         if ( vectorPos == 1) // y 
         {
+            transform.Translate(speed* a* Time.deltaTime, 0, 0);
             if (transform.position.y <= minPos)
             {
                 a = 1; 
             }
         
             if (transform.position.y >= maxPos)
+            {
+                a=-1;
+            }        
+        }
+        
+        if ( vectorPos == 2) // z 
+        {
+            transform.Translate(0, 0, speed* a* Time.deltaTime);
+            if (transform.position.z <= minPos)
+            {
+                a = 1; 
+            }
+        
+            if (transform.position.z >= maxPos)
             {
                 a=-1;
             }        

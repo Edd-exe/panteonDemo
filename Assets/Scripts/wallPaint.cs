@@ -1,48 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class wallPaint : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+    bool clickFirst = true;
+    RaycastHit carpma;
+    float painted;
+    float maxpaint = 49;
+
+    public Slider paintSlider;
 
     void Update()
-    {
+    {      
+        paintSlider.value = painted; 
 
-    }
-
-    static float CalculateFill ( Color[] colors , Color reference , float tolerance )
-    {
-        Vector3 target = new Vector3{ x=reference.r , y=reference.g , z=reference.b };
-        int numHits = 0;
-        const float sqrt_3 = 1.73205080757f;
-        
-        for( int i=0 ; i<colors.Length ; i++ )
+        Ray outray = GameObject.Find("Main Camera").GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(outray.origin,outray.direction *50f , Color.red);
+            
+        if (Physics.Raycast(outray, out carpma) && Input.GetMouseButton(0))
         {
-            Vector3 next = new Vector3{ x=colors[i].r , y=colors[i].g , z=colors[i].b };
-            float mag = Vector3.Magnitude( target - next ) / sqrt_3;
-            numHits += mag<=tolerance ? 1 : 0;
-        } 
-        return (float)numHits / (float)colors.Length;;
-    }
-    
-    static float CalculateSimilarity ( Color[] colors , Color reference )
-    {
-        Vector3 target = new Vector3{ x=reference.r , y=reference.g , z=reference.b };
-        float accu = 0;
-        const float sqrt_3 = 1.73205080757f;
-        
-        for( int i=0 ; i<colors.Length ; i++ )
-        {
-         Vector3 next = new Vector3{ x=colors[i].r , y=colors[i].g , z=colors[i].b };
-         accu += Vector3.Magnitude( target - next ) / sqrt_3;
+            if (carpma.collider.gameObject.tag == "unpainted")
+            {
+                Debug.Log("mouse click");
+                clickFirst = false;
+                carpma.collider.gameObject.tag = "painted";
+                painted +=1;
+                Debug.Log(painted);
+            }
         }
-        return 1f - ( (float)accu / (float)colors.Length );
-    }
 
-     
+        if (painted == 49)
+        {
+            Debug.Log("Winnn 2 !!");
+        }   
+    }    
+
+    /*void  OnMouseDown() 
+    {
+    }*/
 
 }

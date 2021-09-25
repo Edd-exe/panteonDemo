@@ -39,9 +39,8 @@ public class halfDonut : MonoBehaviour
                 a = 0;
             }
         }
-        
-        
-        Debug.Log(transform.localRotation.eulerAngles.x);
+ 
+       //   Debug.Log(transform.localRotation.eulerAngles.x);
 
     }
 

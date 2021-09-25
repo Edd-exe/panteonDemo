@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class opponentControl : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform followCube;
+    Animator animPalyer;
+
     void Start()
     {
+        NavMeshAgent nMesh = GetComponent<NavMeshAgent>();
+        nMesh.destination = followCube.position;
         
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //animPalyer.SetInteger("movement",1);
     }
 }
