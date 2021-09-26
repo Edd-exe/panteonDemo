@@ -9,6 +9,8 @@ public class playerController : MonoBehaviour
     Animator animPalyer;
     public Transform mainCamera;
 
+    public bool[] rankingControl;
+
     void Start() 
     {
         animPalyer = GetComponent<Animator>();
@@ -43,5 +45,7 @@ public class playerController : MonoBehaviour
             Debug.Log("win!!");
         }   
     }
+
+
 
 }

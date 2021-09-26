@@ -15,10 +15,11 @@ public class Rotates : MonoBehaviour
 
     void OnCollisionStay(Collision other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Oppo")
         {
             //Debug.Log("worked collision");
             other.transform.Translate(zRot *(-10) * Time.deltaTime, 0, 0);
         }
+        
     }
 }
