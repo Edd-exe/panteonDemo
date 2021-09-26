@@ -17,7 +17,7 @@ public class Rotates : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("worked collision");
+            //Debug.Log("worked collision");
             other.transform.Translate(zRot *(-10) * Time.deltaTime, 0, 0);
         }
     }
