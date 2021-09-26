@@ -8,8 +8,6 @@ public class halfDonut : MonoBehaviour
     public float speed;
     int a;
 
-
-
     void Update()
     { 
         if (HDPos == 0)

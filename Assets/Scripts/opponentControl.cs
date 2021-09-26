@@ -38,36 +38,48 @@ public class opponentControl : MonoBehaviour
         
         Posx = transform.position.x;
         Posx = transform.position.y;
-        Posx = transform.position.z;
-
-        
-    
+        Posx = transform.position.z;   
     }
 
     void Update()
     {
-
-        if(transform.position.z > playerBoy.transform.position.z)
+        if (onunde == false)
         {
-            onunde = true;      
-        }
-        else
-        {
-            onunde = false;
+            if (transform.position.z > playerBoy.transform.position.z)
+            {
+                playerBoy.GetComponent<playerController>().rankingPos++;
+                onunde = true;             
+            }
         }
 
-       
+        if (onunde == true)
+        {
+            if (transform.position.z < playerBoy.transform.position.z)
+            {
+                playerBoy.GetComponent<playerController>().rankingPos--;
+                onunde = false;             
+            }
+        }
     }
 
-
-     private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter(Collision other) 
     {
-        if (other.gameObject.tag == "Respawn")
+        if (other.gameObject.tag == "Respawn" && transform.position.z > playerBoy.transform.position.z)
         {
             transform.position = new Vector3(Posx,Posy,Posz);
             animOppo.SetInteger("Gmovement",0);    
             nMesh.speed = speed;     
-        }       
+            
+            playerBoy.GetComponent<playerController>().rankingPos--;
+            onunde = false;
+        }
+        
+        if (other.gameObject.tag == "Respawn")
+        {
+            transform.position = new Vector3(Posx,Posy,Posz);
+            animOppo.SetInteger("Gmovement",0);    
+            nMesh.speed = speed;                           
+        }      
     }
 
 
@@ -104,28 +116,23 @@ public class opponentControl : MonoBehaviour
         
         if (other.gameObject.name == "block5") ////////////////////// PART 3
         {
-            
             if (hDonut1.transform.localRotation.eulerAngles.x >= 0 && hDonut1.transform.localRotation.eulerAngles.x <= 40)
             {
                 nMesh.speed = speed;
                 animOppo.SetInteger("Gmovement",0); 
-                Debug.Log("yürü");
-                
+                Debug.Log("yürü");           
             }
             else
             {
-                Debug.Log("dur");
                 nMesh.speed = 0;
                 animOppo.SetInteger("Gmovement",1); 
-            }  
-            
+            }           
         }
 
         if (other.gameObject.name == "block4")
         {
             if (hDonut2.transform.localRotation.eulerAngles.x >= 0 && hDonut1.transform.localRotation.eulerAngles.x <= 40)
             {
-                //Debug.Log("dur");
                 nMesh.speed = 0;
                 animOppo.SetInteger("Gmovement",1);
                 
@@ -134,32 +141,26 @@ public class opponentControl : MonoBehaviour
             {             
                 nMesh.speed = speed;
                 animOppo.SetInteger("Gmovement",0); 
-                //Debug.Log("yürü");
             } 
         }
 
         if (other.gameObject.name == "block7") 
-        {
-            
+        {   
             if (hDonut3.transform.localRotation.eulerAngles.x >= 0 && hDonut1.transform.localRotation.eulerAngles.x <= 40)
             {
-               Debug.Log("dur");
                 nMesh.speed = 0;
                 animOppo.SetInteger("Gmovement",1);                
             }
             else
-            {
-                  
+            {               
                 nMesh.speed = speed;
                 animOppo.SetInteger("Gmovement",0); 
                 Debug.Log("yürü");
-            }  
-            
+            }           
         }
 
         if (other.gameObject.name == "block6")
-        {
-            
+        {          
             if (hDonut4.transform.localRotation.eulerAngles.x >= 0 && hDonut1.transform.localRotation.eulerAngles.x <= 40)
             {
                 nMesh.speed = speed;
@@ -167,13 +168,10 @@ public class opponentControl : MonoBehaviour
             }
             else
             {
-                Debug.Log("dur");
                 nMesh.speed = 0;
                 animOppo.SetInteger("Gmovement",1); 
-            }  
-            
+            }         
         }
-
 
         if (other.gameObject.name == "block8") ////////////////////// PART 4
         {           
@@ -184,11 +182,9 @@ public class opponentControl : MonoBehaviour
             }            
             else
             {
-                Debug.Log("dur");
                 nMesh.speed = 0;
                 animOppo.SetInteger("Gmovement",1); 
-            }  
-            
+            }        
         }
 
         if (other.gameObject.name == "block9") 
@@ -200,24 +196,18 @@ public class opponentControl : MonoBehaviour
             }            
             else
             {
-                Debug.Log("dur");
                 nMesh.speed = 0;
                 animOppo.SetInteger("Gmovement",1); 
-            }  
-            
+            }    
         }
 
         if (other.gameObject.tag == "Finish") 
         {                       
             nMesh.speed = 0;
             animOppo.SetInteger("Gmovement",1);          
-           
         }
-
-  
             
     }
-
     
 }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class wallPaint : MonoBehaviour
 {
@@ -23,17 +24,18 @@ public class wallPaint : MonoBehaviour
         {
             if (carpma.collider.gameObject.tag == "unpainted")
             {
-                Debug.Log("mouse click");
+                //Debug.Log("mouse click");
                 clickFirst = false;
                 carpma.collider.gameObject.tag = "painted";
                 painted +=1;
-                Debug.Log(painted);
+                //Debug.Log(painted);
             }
         }
 
         if (painted == 49)
         {
             Debug.Log("Winnn 2 !!");
+            SceneManager.LoadScene("Task 4");
         }   
     }    
 
